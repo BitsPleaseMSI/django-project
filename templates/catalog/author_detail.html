@@ -1,0 +1,28 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<h1>Title: {{ author.first_name }} {{ author.last_name }}</h1>
+  <p>
+    <strong>Period:</strong>
+    {{ author.date_of_birth }} -
+      {% if author.date_of_death %}
+        {{ author.date_of_death }}
+      {% else %}
+        <i>present</i>
+      {% endif %}
+    <br>
+    <strong>
+    {% if perms.catalog.can_mark_returned %}
+      <a href="./delete">Delete</a>
+      | <a href="./update">Update</a>
+    {% endif %}
+    </strong>
+
+    <br><h5>Books by this author: {{ author.book_set.count }}</h5><br>
+    {% for book in author.book_set.all %}
+      <strong>{{ book.title }}</strong> (Copies: {{ book.bookinstance_set.count }})<br>
+      &nbsp&nbsp&nbsp&nbsp{{ book.summary }}<br>
+    {% endfor %}
+
+  </p>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}
+  <title>Learning Library</title>
+{% endblock %}
+
+{% block content %}
+  <h1>Learning Library</h1>
+  <p>Welcome to LocalLibrary, a website developed by <em>Mozilla Developer Network</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The library currently has the following record counts:</p>
+  <ul>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+    <li><strong>Books:</strong> {{ num_books }}</li>
+    <li><strong>Book copies:</strong> {{ num_book_instances }} ({{ num_instances_available }} Available)</li>
+  </ul>
+  <p>Visits: {{ num_visits }}</p>
+{% endblock %}
